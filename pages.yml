@@ -1,0 +1,99 @@
+# EJ Landscape website content editor — Pages CMS
+# After placing this folder in a GitHub repository, sign in at https://app.pagescms.org
+media:
+  input: media
+  output: /media
+  rename: safe
+  categories: [image]
+content:
+  - name: site
+    label: EJ Landscape website
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - name: hero
+        label: Homepage / top banner
+        type: object
+        fields:
+          - {name: eyebrow, label: Small heading, type: string}
+          - {name: heading_first, label: Main headline line 1, type: string}
+          - {name: heading_second, label: Main headline line 2, type: string}
+          - {name: heading_accent, label: Italic headline, type: string}
+          - {name: description, label: Intro paragraph, type: text}
+          - {name: image, label: Main background photo, type: image}
+          - {name: service_line, label: Footer description in banner, type: string}
+          - {name: area_line, label: Service area in banner, type: string}
+      - name: services_intro
+        label: Services introduction
+        type: object
+        fields:
+          - {name: heading_first, label: Main heading, type: string}
+          - {name: heading_accent, label: Italic heading, type: string}
+          - {name: description, label: Intro paragraph, type: text}
+      - name: services
+        label: Services cards (add / edit / remove)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - {name: category, label: Service category, type: string}
+          - {name: title, label: Service name, type: string}
+          - {name: description, label: Service description, type: text}
+          - {name: image, label: Service photo, type: image}
+      - name: about
+        label: About EJ Landscape
+        type: object
+        fields:
+          - {name: heading_first, label: Heading, type: string}
+          - {name: heading_accent, label: Italic heading, type: string}
+          - {name: paragraph_one, label: First paragraph, type: text}
+          - {name: paragraph_two, label: Second paragraph, type: text}
+          - {name: image, label: About photo, type: image}
+      - name: process
+        label: Our process
+        type: object
+        fields:
+          - {name: heading, label: Process heading, type: string}
+          - name: steps
+            label: Steps
+            type: object
+            list: true
+            fields:
+              - {name: label, label: Step label, type: string}
+              - {name: title, label: Step title, type: string}
+              - {name: description, label: Step description, type: text}
+      - name: gallery
+        label: Our work / project gallery
+        type: object
+        fields:
+          - {name: heading, label: Gallery heading, type: string}
+          - name: photos
+            label: Project photos (add as many as you want)
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            fields:
+              - {name: title, label: Photo caption, type: string}
+              - {name: image, label: Upload project photo, type: image}
+          - {name: note, label: Gallery note, type: text}
+      - name: contact
+        label: Contact and estimate requests
+        type: object
+        fields:
+          - {name: heading_first, label: Heading, type: string}
+          - {name: heading_accent, label: Italic heading, type: string}
+          - {name: description, label: Contact intro paragraph, type: text}
+          - {name: service_area, label: Cities served, type: text}
+          - {name: email, label: Company email for estimate mailto, type: string, required: false, description: 'Visitors must press Send in their own email app. This is not a server-side form.'}
+          - {name: phone, label: Business phone, type: string, required: false}
+      - name: footer
+        label: Footer
+        type: object
+        fields:
+          - {name: tagline, label: Tagline, type: string}
+          - {name: area, label: Area, type: string}
